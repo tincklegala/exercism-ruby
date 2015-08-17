@@ -13,8 +13,8 @@ class Raindrops
   	divisor = 2
   	dividend = number
   	while dividend != 1
-  		if dividend%divisor == 0
-  			dividend = dividend/divisor
+  		if dividend % divisor == 0
+  			dividend /= divisor
   			factors.push(divisor)  			
   		else
   			divisor += 1
@@ -23,7 +23,7 @@ class Raindrops
 
   	raindrop = ""
   	factors.uniq.each do |factor|
-  		raindrop += CONVERSION_STRING[factor] if CONVERSION_STRING.has_key?(factor)
+  		raindrop += CONVERSION_STRING[factor] if CONVERSION_STRING.key?(factor)
   	end
 
   	return "#{number}" if raindrop.empty?

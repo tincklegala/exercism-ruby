@@ -1,5 +1,4 @@
 module Year
-
   module_function
   
   def leap?(check_year)
@@ -15,5 +14,4 @@ module Year
     end
     
   end 
-
 end

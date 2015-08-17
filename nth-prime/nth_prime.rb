@@ -12,7 +12,7 @@ class Prime
       prime_array.each do |val|  
         if number % val == 0
           flag = false
-          number = number.next()
+          number = number.next
           break         
         end
       end
