@@ -1,24 +1,33 @@
-require 'prime'
 class Raindrops
-	def self.convert(num)
-		return "1" if num == 1
 
-		factor = Prime.prime_division(num).flat_map{|i,j| i}
+	CONVERSION_STRING = {
+    3 => "Pling",
+    5 => "Plang",
+    7 => "Plong"
+  }
 
-		raindrop = ""
+  def self.convert(number)
+  	return "1" if number == 1
 
-		count = factor.length
-		count.times do |variable|
-			case factor[variable]
-			when 3
-				raindrop += "Pling"
-			when 5
-				raindrop += "Plang"
-			when 7
-				raindrop += "Plong"
-			end		
-		end
-		return "#{num}" if raindrop.empty?
-		raindrop
-	end	
+  	factors = []
+  	divisor = 2
+  	dividend = number
+  	while dividend != 1
+  		if dividend%divisor == 0
+  			dividend = dividend/divisor
+  			factors.push(divisor)  			
+  		else
+  			divisor += 1
+  		end
+  	end
+
+  	raindrop = ""
+  	factors.uniq.each do |factor|
+  		raindrop += CONVERSION_STRING[factor] if CONVERSION_STRING.has_key?(factor)
+  	end
+
+  	return "#{number}" if raindrop.empty?
+  	raindrop  	
+  end
+	
 end

@@ -1,38 +1,32 @@
 class Complement
-	VERSION = 1
-	def self.of_dna(dna)
-		dna.length.times do |object|
-			case dna[object]
-			when 'G'
-				dna[object] = 'C'
-			when 'C'
-				dna[object] = 'G'
-			when 'T'
-				dna[object] = 'A'
-			when 'A'
-				dna[object] = 'U'	
-			else
-				raise(ArgumentError)			
-			end
-		end
-		dna
-	end
+  VERSION = 2
 
-	def self.of_rna(rna)
-		rna.length.times do |object|
-			case rna[object]
-			when 'G'
-				rna[object] = 'C'
-			when 'C'
-				rna[object] = 'G'
-			when 'U'
-				rna[object] = 'A'
-			when 'A'
-				rna[object] = 'T'	
-			else
-				raise(ArgumentError)			
-			end
-		end
-		rna		
-	end
+  RNA_COMPLEMENT = {
+    'G' => 'C',
+    'C' => 'G',
+    'A' => 'T',
+    'U' => 'A'
+  }
+  DNA_COMPLEMENT = RNA_COMPLEMENT.invert
+  
+  def self.of_rna(rna)
+  	val = 0
+    rna.each_char do |nucleotide|
+      raise(ArgumentError) if RNA_COMPLEMENT[nucleotide].nil?
+      rna[val] = RNA_COMPLEMENT[nucleotide]
+      val += 1
+    end
+    rna   
+  end
+
+  def self.of_dna(dna)
+  	val = 0
+    dna.each_char do |nucleotide|
+      raise(ArgumentError) if DNA_COMPLEMENT[nucleotide].nil?
+      dna[val] = DNA_COMPLEMENT[nucleotide]
+      val += 1
+    end
+    dna
+  end
+
 end

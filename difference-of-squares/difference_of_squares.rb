@@ -4,24 +4,16 @@ class Squares
 	end
 
 	def sum_of_squares
-		sum = 0
-		(@num+1).times do |variable|
-			sum += variable**2			
-		end
-		sum
+		(1..@num).inject(0){ |sum, val| sum += val**2 }
 	end
 
 	def square_of_sums
-		sum = 0
-		(@num+1).times do |variable|
-			sum += variable			
-		end
-		sum	** 2	
+		total = (1..@num).inject(0){ |sum, val|	sum += val }
+		total**2	
 	end
 
 	def difference
-		a = Squares.new(@num).sum_of_squares
-		b = Squares.new(@num).square_of_sums
-		(a-b).abs
+		square_of_sums-sum_of_squares
 	end
+
 end
