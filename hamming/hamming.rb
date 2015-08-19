@@ -1,12 +1,9 @@
 # Calculating Hamming Distance between two DNA strands
 class Hamming
-  VERSION = 3
+  VERSION = 4
   def self.compute(first_strand, second_strand)
     raise(ArgumentError) unless first_strand.size == second_strand.size
-    hamming_distance = 0
-    first_strand.size.times do |index|
-      hamming_distance += 1 unless first_strand[index] == second_strand[index]
-    end
-    hamming_distance
+
+    (0..(first_strand.size - 1)).inject(0) { |a, e| (first_strand[e] == second_strand[e]) ? a : a + 1 }
   end
 end
