@@ -3,13 +3,13 @@ gem 'minitest', '>= 5.0.0'
 require 'minitest/autorun'
 require_relative 'accumulate'
 
+# Implementing accumulate
 class ArrayTest < Minitest::Test
   def test_empty_accumulation
     assert_equal [], [].accumulate { |e| e * e }
   end
 
   def test_accumulate_squares
-    skip
     result = [1, 2, 3].accumulate do |number|
       number * number
     end
@@ -17,19 +17,16 @@ class ArrayTest < Minitest::Test
   end
 
   def test_accumulate_upcases
-    skip
     result = %w(hello world).accumulate(&:upcase)
     assert_equal %w(HELLO WORLD), result
   end
 
   def test_accumulate_reversed_strings
-    skip
     result = %w(the quick brown fox etc).accumulate(&:reverse)
     assert_equal %w(eht kciuq nworb xof cte), result
   end
 
   def test_accumulate_recursively
-    skip
     result = %w(a b c).accumulate do |char|
       %w(1 2 3).accumulate do |digit|
         "#{char}#{digit}"
