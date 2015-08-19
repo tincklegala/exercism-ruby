@@ -10,24 +10,14 @@ class Complement
   DNA_COMPLEMENT = RNA_COMPLEMENT.invert
   
   def self.of_rna(rna_strand)
-  	rna_complement = ''
-    index = 0
-    rna_strand.each_char do |nucleotide|
-      raise(ArgumentError) if RNA_COMPLEMENT[nucleotide].nil?
-      rna_complement[index] = RNA_COMPLEMENT[nucleotide]
-      index += 1
-    end
-    rna_complement 
+    rna_strand.each_char.map do |nucleotide| 
+      (RNA_COMPLEMENT[nucleotide].nil?) ? raise(ArgumentError) : RNA_COMPLEMENT[nucleotide]
+    end.join('')
   end
 
   def self.of_dna(dna_strand)
-    dna_complement = ''
-  	index = 0
-    dna_strand.each_char do |nucleotide|
-      raise(ArgumentError) if DNA_COMPLEMENT[nucleotide].nil?
-      dna_complement[index] = DNA_COMPLEMENT[nucleotide]
-      index += 1
-    end
-    dna_complement
+    dna_strand.each_char.map do |nucleotide|
+      (DNA_COMPLEMENT[nucleotide].nil?) ? raise(ArgumentError) : DNA_COMPLEMENT[nucleotide]
+    end.join('')
   end
 end
