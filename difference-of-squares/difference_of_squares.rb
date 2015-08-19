@@ -4,7 +4,7 @@ class Squares
 	end
 
 	def sum_of_squares
-		(1..@num).map { |n| n**2 }.inject(:+)
+		(1..@num).inject { |a,e| a + e**2}
 	end
 
 	def square_of_sums

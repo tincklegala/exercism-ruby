@@ -63,6 +63,6 @@ class ComplementTest < Minitest::Test
   # This test is for the sake of people providing feedback, so they
   # know which version of the exercise you are solving.
   def test_bookkeeping
-    assert_equal 2, Complement::VERSION
+    assert_equal 3, Complement::VERSION
   end
 end
