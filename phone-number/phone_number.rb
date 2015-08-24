@@ -12,11 +12,11 @@ class PhoneNumber
     return '0000000000' if number_size < 10 || number_size > 11
 
     if number_size == 10
-      return cleaned_number
+      cleaned_number
     elsif cleaned_number[0] == '1'
-      return cleaned_number[1..10]
+      cleaned_number[1..10]
     else
-      return '0000000000'
+      '0000000000'
     end
   end
 
@@ -26,6 +26,6 @@ class PhoneNumber
 
   def to_s
     @phone_number = @phone_number[1, 10] if @phone_number.size == 11
-    '(' + @phone_number[0, 3] + ') ' + @phone_number[3, 3] + '-' + @phone_number[6, 4]
+    "(#{@phone_number[0, 3]}) #{@phone_number[3, 3]}-#{@phone_number[6, 4]}"
   end
 end
